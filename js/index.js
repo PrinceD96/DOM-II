@@ -1,5 +1,5 @@
 // // Your code goes here
-alert("Don't double click on this page or it'll disappear.");
+// alert("Don't double click on this page or it'll disappear.");
 
 //#1 Page (dblclick)
 $("body").dblclick(function() {
@@ -59,10 +59,7 @@ text.forEach(txt =>
   })
 );
 
-// #6 wheel
-const imgs = document.querySelector("img");
-imgs.addEventListener("wheel", zoom);
-
+// #6 Img (Wheel)
 function zoom(event) {
   event.preventDefault();
   scale += event.deltaY * -0.01;
@@ -71,5 +68,28 @@ function zoom(event) {
 }
 
 let scale = 1;
-const el = document.querySelector("div");
+const el = document.querySelector("img");
 el.onwheel = zoom;
+
+// #7 Footer (Contextmenu)
+const noContext = document.querySelector("footer p");
+noContext.addEventListener("contextmenu", e => {
+  e.preventDefault();
+});
+
+// Header #8 (Resize)
+let heightOutput = document.createElement("a");
+let widthOutput = document.createElement("a");
+heightOutput.style.color = "red";
+widthOutput.style.color = "red";
+
+navBar.prepend(heightOutput, widthOutput);
+
+function reportWindowSize() {
+  heightOutput.textContent = window.innerHeight;
+  widthOutput.textContent = window.innerWidth;
+}
+
+window.onresize = reportWindowSize;
+
+// #9
